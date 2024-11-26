@@ -71,7 +71,7 @@ mod http_client;
 #[derive(Debug, serde::Deserialize, Clone)]
 #[serde(untagged)]
 #[allow(dead_code)]
-enum Audience {
+pub enum Audience {
     Single(String),
     Multiple(Vec<String>),
 }
@@ -107,25 +107,25 @@ pub struct TokenResponse {
 #[allow(dead_code)]
 pub struct DatClaims {
     #[serde(rename = "@type")]
-    type_: String,
+    pub type_: String,
     #[serde(rename = "@context")]
-    context_: String,
-    referring_connector: String,
-    security_profile: String,
+    pub context_: String,
+    pub referring_connector: String,
+    pub security_profile: String,
     #[serde(rename = "iat")]
-    issued_at: i64,
+    pub issued_at: i64,
     #[serde(rename = "exp")]
-    expires_at: i64,
+    pub expires_at: i64,
     #[serde(rename = "nbf")]
-    not_before: i64,
+    pub not_before: i64,
     #[serde(rename = "sub")]
-    subject: String,
+    pub subject: String,
     #[serde(rename = "aud")]
-    audience: Audience,
+    pub audience: Audience,
     #[serde(rename = "iss")]
-    issuer: String,
+    pub issuer: String,
     #[serde(rename = "jti")]
-    jwt_id: String,
+    pub jwt_id: String,
 }
 
 #[derive(thiserror::Error, Debug)]
