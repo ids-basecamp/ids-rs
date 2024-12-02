@@ -7,7 +7,7 @@ pub enum DapsHttpClientError {
     #[error("HTTP request failed because of Status code {0}: {1}")]
     RequestFailed(u16, String),
     #[error("Error in sending HTTP request: {0}")]
-    RedirectError(Box<dyn std::error::Error>),
+    RedirectError(Box<dyn std::error::Error + Send + Sync>),
     #[error("Error in parsing JSON response: {0}")]
     JsonError(String),
     #[error("Error in parsing response as text: {0}")]

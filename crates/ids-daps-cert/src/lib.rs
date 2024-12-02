@@ -19,7 +19,7 @@ pub struct RSAKeyParameters<'a> {
     pub modulus: std::borrow::Cow<'a, [u8]>,
 }
 
-type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+type Result<T> = std::result::Result<T, Box<dyn std::error::Error + Send + Sync>>;
 
 /**
  * The `CertUtil` provides methods for extracting different information from an .p12 file, issued by

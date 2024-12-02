@@ -2,7 +2,7 @@
 pub(super) fn read_and_parse_p12(
     p12_file_path: &std::path::Path,
     password: &str,
-) -> Result<openssl::pkcs12::ParsedPkcs12_2, Box<dyn std::error::Error>> {
+) -> super::Result<openssl::pkcs12::ParsedPkcs12_2> {
     // Read the .p12 file
     let buf = std::fs::read(p12_file_path)?;
 
@@ -43,7 +43,7 @@ pub(super) fn ski_aki<'a>(
 /// Extracts the RSA components of a x509 Certificate
 pub(super) fn rsa_exponent_and_modulus<'a>(
     x509: &openssl::x509::X509,
-) -> Result<(std::borrow::Cow<'a, [u8]>, std::borrow::Cow<'a, [u8]>), Box<dyn std::error::Error>>
+) -> super::Result<(std::borrow::Cow<'a, [u8]>, std::borrow::Cow<'a, [u8]>)>
 {
     // Get public key from x509 certificate
     let public_key = x509
