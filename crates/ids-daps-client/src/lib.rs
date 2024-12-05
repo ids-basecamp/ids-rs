@@ -220,7 +220,6 @@ where
 
         // Set up validation configuration
         let mut validation = jsonwebtoken::Validation::new(jsonwebtoken::Algorithm::RS256);
-        validation.sub = Some(self.sub.to_string());
         validation.set_audience(&["idsc:IDS_CONNECTORS_ALL"]);
         validation.set_required_spec_claims(&["exp", "nbf", "aud", "iss", "sub"]);
 
